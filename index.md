@@ -26,10 +26,7 @@ layout: base
 <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 <script>
-var map = L.map('map', {
-  center: [44.433219, 26.095353],
-  zoom: 12,
-})
+var map = L.map('map')
 
 L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
@@ -56,7 +53,7 @@ var data = {
   ],
 }
 
-L.geoJson(data, {
+var layer = L.geoJson(data, {
   pointToLayer: function(feature, latLng) {
     var myIcon = L.divIcon({
       html: '<p><a href="' + feature.properties.url + '">' + feature.properties.brand + '</a></p>',
@@ -66,4 +63,5 @@ L.geoJson(data, {
     return L.marker(latLng, {icon: myIcon})
   },
 }).addTo(map)
+map.fitBounds(layer.getBounds(), {padding: [50, 50]})
 </script>
