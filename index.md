@@ -7,6 +7,18 @@ layout: base
   ul { margin: 0 }
   #map { position: absolute; top: 0; bottom: 0; left: 0; right: 0 }
   .leaflet-container .leaflet-control-attribution a { color: #557b8a }
+  .place {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ccc;
+  }
+  .place p {
+    background: #ccc;
+    overflow: hidden; position: absolute; left: -10px; bottom: 10px; margin: 0;
+    padding: 2px 5px; font-size: 16px;
+  }
+  .place p a { display: block; color: #5a91a7; text-decoration: none }
+  .place p a:hover { color: #7dabbd }
 </style>
 
 <div id="map"></div>
@@ -44,5 +56,14 @@ var data = {
   ],
 }
 
-L.geoJson(data).addTo(map)
+L.geoJson(data, {
+  pointToLayer: function(feature, latLng) {
+    var myIcon = L.divIcon({
+      html: '<p><a href="' + feature.properties.url + '">' + feature.properties.brand + '</a></p>',
+      className: 'place',
+      iconSize: [0, 0],
+    })
+    return L.marker(latLng, {icon: myIcon})
+  },
+}).addTo(map)
 </script>
