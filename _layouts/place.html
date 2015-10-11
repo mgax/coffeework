@@ -1,6 +1,31 @@
 ---
 layout: base
 ---
-<h1>{{ page.brand }}</h1>
-<p><img src="{{ page.photo }}"></p>
+<style>
+  html, body { margin: 0; height: 100% }
+  .place-photo-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 50%;
+    overflow: hidden;
+  }
+  .place-photo {
+    width: 100%;
+    margin-top: -25%;
+  }
+  .place-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+</style>
+
+<div class="place-photo-box">
+  <img class="place-photo" src="{{ page.photo }}">
+</div>
+<div class="place-content">
+  <h1>{{ page.brand }}</h1>
+</div>
 {{ content }}
