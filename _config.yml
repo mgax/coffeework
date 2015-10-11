@@ -1,0 +1,6 @@
+base_url: '/coffeework'
+
+defaults:
+  - scope: {path: ''}
+    values:
+      layout: 'place'
