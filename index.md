@@ -8,17 +8,18 @@ layout: base
   #map { position: absolute; top: 0; bottom: 0; left: 0; right: 0 }
   .leaflet-container .leaflet-control-attribution a { color: #557b8a }
   .place {
+    margin-left: -10px !important;
+    margin-top: -10px !important;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid #ccc;
+    border-top: 10px solid rgba(72, 47, 30, 0.71);
   }
   .place p {
-    background: #ccc;
+    background: rgba(72, 47, 30, 0.71);
     overflow: hidden; position: absolute; left: -10px; bottom: 10px; margin: 0;
-    padding: 2px 5px; font-size: 16px;
+    padding: 5px 10px; font-size: 16px;
   }
-  .place p a { display: block; color: #5a91a7; text-decoration: none }
-  .place p a:hover { color: #7dabbd }
+  .place p a { display: block; color: white; text-decoration: none }
 </style>
 
 <div id="map"></div>
